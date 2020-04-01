@@ -83,11 +83,10 @@ learning_rate = 0.1
 steps = 200
 
 for step in range(steps):
-    # tensorflow steps in to handle a chunk of differential math.
+
+    # tensorflow steps in to handle derivative calculations
     with tf.GradientTape() as tape:
         predictions = predict(X, w=w, b=b)
-
-        # loss function = measurement of the error
         loss = mean_squared_error(predictions, Y)
 
     gradients = tape.gradient(loss, [w, b])
