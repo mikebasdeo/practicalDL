@@ -3,7 +3,6 @@
 # ### Linear Regression Practice
 # ### Mike Basdeo
 
-
 # %%
 # imports
 import matplotlib.pyplot as mpl
