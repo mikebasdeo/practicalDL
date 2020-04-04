@@ -58,13 +58,27 @@ print(x_train.shape)
 
 
 # %%
-model.compile(optimizer='adam',
+model.compile(optimizer=tf.optimizers.Adam(),
               loss='sparse_categorical_crossentropy',
-              metrics=['accuracy'])
+              metrics=['accuracy'],
+              )
 
 
 # %%
-model.fit(x_train, y_train, epochs=20)
+model.fit(x_train, y_train, epochs=10,
+          validation_data=(x_test, y_test))
+
+
+# %%
+# show summary of model fitting
+h = model.history.history
+print(h)
+# graph the accuracy change from each epoch
+plt.plot(h['accuracy'])
+plt.plot(h['val_accuracy'])
+
+
+# %%
 
 
 # %%
