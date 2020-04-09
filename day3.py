@@ -38,15 +38,25 @@ print(y_train[50])
 
 # %%
 # normalize the data
-x_train = x_train/255.0
-x_test = x_test/255.0
+x_train = x_train / 255.0
+x_test = x_test / 255.0
+print('Normalize the data')
+
+# %%
+print(x_train[50])
+
+
+# %%
+plt.imshow(x_train[50])
 
 
 # %%
 # now specify the model you want.
 model = Sequential()
 model.add(Flatten(input_shape=(28, 28)))
-model.add(Dense(units=256, activation='relu'))
+model.add(Dense(units=64, activation='relu'))
+model.add(Dense(units=32, activation='relu'))
+model.add(Dense(units=16, activation='relu'))
 # output layer
 model.add(Dense(units=10, activation='softmax'))
 
@@ -54,10 +64,7 @@ print(model.summary())
 
 
 # %%
-print(x_train.shape)
-
-
-# %%
+#
 model.compile(optimizer=tf.optimizers.Adam(),
               loss='sparse_categorical_crossentropy',
               metrics=['accuracy'],
